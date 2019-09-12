@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function PhotoCard() {
     const [photo, setPhoto] = useState({});
-    const [date, setDate] = useState('2019-09-12');
+    const [date, setDate] = useState('2019-09-11');
 
     useEffect(() => {
         axios
@@ -21,13 +21,19 @@ function PhotoCard() {
 
     return( 
         <div className='photo_container'>
-            <h2>Select the date for new photo:</h2>
-            <input type='date' onChange={e => setDate(e.target.value)}  />
+            <div className='date_selector'>
+                <h2>Select the date for new photo:</h2>
+                <input type='date' onChange={e => setDate(e.target.value)}  />
+            </div>
+           
             <img className='photo_of_day' alt='astronomic scene in outer space' src={photo.url} />
-            <h3 className='title'>{photo.title}</h3>
-            <h3 className='copyright'>Image Credit & Copyright: {photo.copyright}</h3>
-            <p className='explanation'><strong>Explanation: </strong> {photo.explanation}</p>
-            <h3>Tomorrow's photo: </h3>
+            
+            <div className='photo_info'>
+                <h3 className='title'>{photo.title}</h3>
+                <h3 className='copyright'>Image Credit & Copyright: {photo.copyright}</h3>
+                <p className='explanation'><strong>Explanation: </strong> {photo.explanation}</p>
+                <h3>Tomorrow's photo: </h3>
+            </div>
         </div>
     );
 };
