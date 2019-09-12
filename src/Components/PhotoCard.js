@@ -1,8 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {
-    Card, CardText, CardBody, CardLink,
-    CardTitle, CardSubtitle, Input, FormGroup, Label} from 'reactstrap';
+import {CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle, Input, FormGroup, Label} from 'reactstrap';
+import styled from 'styled-components';
+
+
+const NasaPODCard = styled.div`
+    background: #fcfdfd;
+    width: 700px;
+    // height:70vmin;
+    margin: 5% auto;
+    line-height: 1.8;
+    color: #37444c;
+    padding:4%;
+`;
+
+const NasaImage = styled.img`
+    width: 500px;
+    height: 600px;
+    object-fit: scale;
+    margin-top:4%
+`;
+const NasaCardTitle = styled.h1`
+    font-size: 1.2rem;
+    margin: 1% 0;
+`;
+
+const NasaCardSubtitle =styled.div`
+    font-size: 1.1rem;
+`;
+
 
 
 function PhotoCard() {
@@ -23,11 +49,11 @@ function PhotoCard() {
     }, [date]);
 
     return( 
-        <div>
-        <Card>
+        <div className='photo_of_day_card'>
+        < NasaPODCard>
           <CardBody>
-            <CardTitle>Need to Pick my Card's Title</CardTitle>
-            <CardSubtitle>Photo's Subtitle</CardSubtitle>
+            <NasaCardTitle><strong>Need to Pick my Card's Title</strong></NasaCardTitle>
+            <NasaCardSubtitle>Photo's Subtitle</NasaCardSubtitle>
             <FormGroup>
             <Label for="exampleDate">Select Your Date:</Label>
             <Input
@@ -39,21 +65,21 @@ function PhotoCard() {
             />
             </FormGroup>
           </CardBody>
-           <img width="100%" src={photo.url} alt="Card image cap" />
+           <NasaImage width="100%" src={photo.url} alt="Card image cap" />
           <CardBody>
-            <CardText>{photo.title}</CardText>
-            <CardText>Image Credit & Copyright: {photo.copyright}</CardText>
+            <CardText><strong>{photo.title}</strong></CardText>
+            <CardText><strong>Image Credit & Copyright:</strong> {photo.copyright}</CardText>
             <CardText><strong>Explanation: </strong> {photo.explanation}</CardText>
   
             <CardLink href="#">Card Link</CardLink>
             <CardLink href="#">Another Link</CardLink>
           </CardBody>
-        </Card>
+        </ NasaPODCard>
       </div>
     );
   };
 
-
+  export default PhotoCard;
 
 
 //         <div className='photo_container'>
@@ -74,7 +100,7 @@ function PhotoCard() {
 //     );
 // };
 
-export default PhotoCard;
+
 
 
 
