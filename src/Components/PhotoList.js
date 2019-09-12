@@ -21,10 +21,12 @@ function PhotoList() {
 
     return( 
         <div className='photo_container'>
+            <p className='date'>{photo.date}</p>
             <img className='photo_of_day' alt='astronomic scene in outer space' src={photo.url} />
             <p className='title'>{photo.title}</p>
             <p className='copyright'>Image Credit & Copyright: {photo.copyright}</p>
             <p className='explanation'>Explanation: {photo.explanation}</p>
+            <p>Tomorrow's photo: </p>
         </div>
     );
 };
