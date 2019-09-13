@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle, Input, FormGroup, Label} from 'reactstrap';
+import { CardText, CardBody, Input, FormGroup, Label} from 'reactstrap';
 import styled from 'styled-components';
 
 
@@ -25,10 +25,15 @@ const NasaCardTitle = styled.h1`
     margin: 1% 0;
 `;
 
-const NasaCardSubtitle =styled.div`
-    font-size: 1.1rem;
+const NasaCardSubtitle = styled.div`
+    font-size: .9rem;
+    margin-bottom: 2%;
 `;
 
+const NasaLink = styled.a`
+    text-decoration: none;
+    color: blue;
+`;
 
 
 function PhotoCard() {
@@ -52,10 +57,10 @@ function PhotoCard() {
         <div className='photo_of_day_card'>
         < NasaPODCard>
           <CardBody>
-            <NasaCardTitle><strong>Need to Pick my Card's Title</strong></NasaCardTitle>
-            <NasaCardSubtitle>Photo's Subtitle</NasaCardSubtitle>
+            <NasaCardTitle><strong>{photo.title}</strong></NasaCardTitle>
+            <NasaCardSubtitle>Image Credit & Copyright: {photo.copyright}</NasaCardSubtitle>
             <FormGroup>
-            <Label for="exampleDate">Select Your Date:</Label>
+            <Label for="exampleDate">Select Picture Date: </Label>
             <Input
               type="date"
               name="date"
@@ -67,12 +72,12 @@ function PhotoCard() {
           </CardBody>
            <NasaImage width="100%" src={photo.url} alt="Card image cap" />
           <CardBody>
-            <CardText><strong>{photo.title}</strong></CardText>
-            <CardText><strong>Image Credit & Copyright:</strong> {photo.copyright}</CardText>
+            <CardText><strong>Today's Date: </strong>{photo.date}</CardText>
+            {/* <CardText><strong>Image Credit & Copyright:</strong> {photo.copyright}</CardText> */}
             <CardText><strong>Explanation: </strong> {photo.explanation}</CardText>
   
-            <CardLink href="#">Card Link</CardLink>
-            <CardLink href="#">Another Link</CardLink>
+            <NasaLink href="https://www.nasa.gov/multimedia/imagegallery/index.html">See More Nasa Images!</NasaLink>
+            {/* <CardLink href="#">Another Link</CardLink> */}
           </CardBody>
         </ NasaPODCard>
       </div>
